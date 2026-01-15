@@ -1,7 +1,17 @@
 import sqlite3
 
 def create_database():
+    """
+    Create and initialize the local SQLite 'sales.db' database with dummy data.
 
+    This function is intended for development and testing purposes. It will:
+    - Create the 'users' and 'sales' tables if they do not already exist.
+    - Remove all existing records from both tables.
+    - Insert a fixed set of example rows into each table to simulate realistic data.
+
+    The function has no parameters and does not return a value. It operates by
+    creating or modifying the 'sales.db' file in the current working directory.
+    """
     conn = sqlite3.connect("sales.db")
     cursor = conn.cursor()
 
