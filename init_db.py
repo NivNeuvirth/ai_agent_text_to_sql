@@ -1,18 +1,20 @@
 import sqlite3
 
-def create_database():
+def create_database(db_path):
     """
-    Create and initialize the local SQLite 'sales.db' database with dummy data.
+    Initializes the SQLite database with the schema and seed data.
 
-    This function is intended for development and testing purposes. It will:
-    - Create the 'users' and 'sales' tables if they do not already exist.
-    - Remove all existing records from both tables.
-    - Insert a fixed set of example rows into each table to simulate realistic data.
+    This function connects to the specified database, creates 'users' and 'sales'
+    tables if they do not exist, clears any existing data, and repopulates the 
+    tables with a standard set of dummy records for testing.
 
-    The function has no parameters and does not return a value. It operates by
-    creating or modifying the 'sales.db' file in the current working directory.
+    Args:
+        db_path (str): The file path to the SQLite database (e.g., 'sales.db').
+
+    Returns:
+        None
     """
-    conn = sqlite3.connect("sales.db")
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
     cursor.execute("""
@@ -64,4 +66,4 @@ def create_database():
     print("Database 'sales.db' created successfully with dummy data")
 
 if __name__ == "__main__":
-    create_database()
+    create_database("sales.db")
